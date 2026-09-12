@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: pyserve
+Version: 0.1.0
+Summary: A web server built from scratch in Python
+Requires-Python: >=3.10
+Provides-Extra: yaml
+Requires-Dist: pyyaml>=6.0; extra == "yaml"
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"

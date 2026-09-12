@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  pyserve:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYSERVE_PORT=8000
+      - PYSERVE_WORKERS=8
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/ping')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
