@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PyServe Demo</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  line-height: 1.6;
+  color: #1a2332;
+  background: #f5f7fa;
+}
+h1 { color: #1677ff; margin-bottom: 0.5rem; }
+.subtitle { color: #6b7684; margin-top: 0; }
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+code {
+  background: #eef5ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Menlo', monospace;
+  font-size: 0.9em;
+}
+a { color: #1677ff; }
+ul { padding-left: 1.5rem; }
+li { padding: 0.25rem 0; }
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+</style>
+</head>
+<body>
+<h1>PyServe</h1>
+<p class="subtitle">A web server built from scratch in Python <span class="badge">LIVE</span></p>
+
+<div class="card">
+<h2>Try the API</h2>
+<ul>
+<li><a href="/api/ping">/api/ping</a> — health check</li>
+<li><a href="/api/time">/api/time</a> — current server time</li>
+<li><a href="/api/echo">/api/echo</a> — see your request headers</li>
+<li><a href="/api/users/42">/api/users/42</a> — path parameter demo</li>
+<li><a href="/stats">/stats</a> — live server statistics</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Try with curl</h2>
+<pre><code>curl http://localhost:8000/api/ping
+curl -X POST http://localhost:8000/api/echo -d "hello"
+curl -I http://localhost:8000/</code></pre>
+</div>
+
+<div class="card">
+<h2>Built with</h2>
+<ul>
+<li>Raw TCP sockets + threading</li>
+<li>HTTP/1.1 parser (no frameworks)</li>
+<li>Middleware chain with rate limiting + compression</li>
+<li>Path traversal protection</li>
+</ul>
+</div>
+<footer style="margin-top: 3rem; padding: 2rem 1rem; text-align: center; font-family: system-ui, -apple-system, sans-serif; font-size: 0.85rem; color: #6b7684; border-top: 1px solid #e5e9f0;">
+  <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: linear-gradient(135deg, #0d64d8, #1890ff); color: #fff; border-radius: 8px; font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 12px; margin-right: 0.5rem; vertical-align: middle;">WK</span>
+  Built by <a href="https://zannii34.github.io" target="_blank" rel="noopener" style="color: #1677ff; text-decoration: none; font-weight: 600;">Wayne Kamachetera</a>
+   <a href="https://github.com/Zannii34" target="_blank" rel="noopener" style="color: #1677ff; text-decoration: none; font-weight: 600;">GitHub</a>
+</footer>
+</body>
+</html>
