@@ -325,20 +325,16 @@ footer .wk-inline {
   <div class="container">
     <div class="metrics">
       <div class="metric">
-        <span class="num">12</span>
-        <span class="label">Python Modules</span>
+        <span class="num" id="metric-requests">--</span><span class="label">Requests Handled</span>
       </div>
       <div class="metric">
-        <span class="num">20</span>
-        <span class="label">Unit Tests</span>
+        <span class="num" id="metric-uptime">--</span><span class="label">Uptime</span>
       </div>
       <div class="metric">
-        <span class="num">8</span>
-        <span class="label">Worker Threads</span>
+        <span class="num" id="metric-avg">--</span><span class="label">Avg Response</span>
       </div>
       <div class="metric">
-        <span class="num">100%</span>
-        <span class="label">From Scratch</span>
+        <span class="num" id="metric-rps">--</span><span class="label">Requests / sec</span>
       </div>
     </div>
   </div>
@@ -462,5 +458,34 @@ conn.sendall(response.to_bytes())</div>
   </div>
 </footer>
 
+<script id="liveStatsScript">
+// Fetch live stats from our own /stats endpoint
+(async function() {
+  try {
+    const res = await fetch("/stats");
+    if (!res.ok) return;
+    const data = await res.json();
+    
+    // Update metrics
+    const updates = {
+      "metric-uptime": data.uptime_human,
+      "metric-requests": data.total_requests,
+      "metric-avg": (data.avg_response_ms || 0).toFixed(1) + "ms",
+      "metric-rps": (data.requests_per_second || 0).toFixed(1)
+    };
+    
+    for (const id in updates) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = updates[id];
+    }
+    
+    // Add "live" indicator
+    const indicator = document.getElementById("liveIndicator");
+    if (indicator) indicator.style.display = "inline-flex";
+  } catch (e) {
+    console.log("Stats fetch failed:", e);
+  }
+})();
+</script>
 </body>
 </html>
