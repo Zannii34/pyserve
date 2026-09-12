@@ -1,4 +1,4 @@
-﻿# PyServe
+# PyServe
 
 **A web server built from scratch in Python.** No Flask, no Django, no frameworks - just socket, threading, and the standard library.
 
