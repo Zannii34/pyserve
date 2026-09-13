@@ -1,5 +1,8 @@
 # PyServe
 
+![Python](https://img.shields.io/badge/python-3.11-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Tests](https://img.shields.io/badge/tests-20%20passed-brightgreen)
+
+
 **A web server built from scratch in Python.** No Flask, no Django, no frameworks - just socket, threading, and the standard library.
 
 ## Live Demo
